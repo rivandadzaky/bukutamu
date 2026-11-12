@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Buku Tamu Puskesmas Bulusan</title>
+  <meta name="description" content="Dashboard admin Buku Tamu Digital Puskesmas Bulusan: statistik, grafik, dan kunjungan terbaru." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="admin-page is-auth-pending" data-page="dashboard" data-protected="true">
+  <div class="boot-screen" id="bootScreen">
+    <div>
+      <span class="spinner" aria-hidden="true"></span>
+      <p>Memeriksa sesi login...</p>
+    </div>
+  </div>
+
+  <div class="boot-error" id="bootError" hidden>
+    <div class="card">
+      <div class="empty-icon" style="margin: 0 auto 14px;">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      </div>
+      <h2>Tidak dapat memuat aplikasi</h2>
+      <p data-boot-message>Periksa koneksi internet Anda lalu muat ulang halaman.</p>
+      <button class="btn btn-primary" type="button" onclick="location.reload()">Muat Ulang</button>
+    </div>
+  </div>
+
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo.png" alt="" width="40" height="40" />
+        </span>
+        <div>
+          <strong>Buku Tamu Digital</strong>
+          <small>Puskesmas Bulusan</small>
+        </div>
+      </div>
+
+      <div class="side-label">Menu Utama</div>
+      <nav class="side-nav" aria-label="Navigasi utama">
+        <a href="dashboard.html" class="is-active" aria-current="page">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg>
+          Dashboard
+        </a>
+        <a href="tamu.html">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg>
+          Buku Tamu
+        </a>
+        <a href="laporan.html">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+          Laporan
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="sidebar-user">
+          <span class="avatar" data-user-initial aria-hidden="true">A</span>
+          <div>
+            <strong data-user-name>Administrator</strong>
+            <small data-user-email>admin</small>
+          </div>
+        </div>
+        <a class="side-link" href="index.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+          Buka halaman tamu
+        </a>
+        <button class="side-link danger" type="button" id="logoutBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" type="button" id="menuToggle" aria-label="Buka menu navigasi">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="topbar-title">
+          <h1>Dashboard</h1>
+          <p>Ringkasan aktivitas buku tamu Puskesmas Bulusan</p>
+        </div>
+        <div class="topbar-right">
+          <span class="demo-chip" data-demo-badge hidden>● Mode Demo</span>
+          <span class="date-chip">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span id="todayLabel">Hari ini</span>
+          </span>
+          <span class="avatar" data-user-initial aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="page">
+        <div class="page-head">
+          <div>
+            <h2>Ringkasan Kunjungan</h2>
+            <p>Statistik dihitung dari data buku tamu yang tersimpan.</p>
+          </div>
+          <div class="page-actions">
+            <a class="btn btn-outline btn-sm" href="index.html" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Form Tamu
+            </a>
+            <a class="btn btn-primary btn-sm" href="tamu.html">
+              Lihat Semua Data
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <section class="stat-grid" aria-label="Statistik kunjungan">
+          <article class="stat-card">
+            <div class="stat-icon stat-icon-calendar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Kunjungan Hari Ini</span>
+              <strong class="stat-value" id="statToday">0</strong>
+              <small class="stat-sub">tanggal hari ini</small>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon stat-icon-users">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5.2a3.5 3.5 0 0 1 0 5.6"/><path d="M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Kunjungan Bulan Ini</span>
+              <strong class="stat-value" id="statMonth">0</strong>
+              <small class="stat-sub">bulan berjalan</small>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon stat-icon-chart">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v3M12 10v8M17 6v12"/></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Kunjungan Tahun Ini</span>
+              <strong class="stat-value" id="statYear">0</strong>
+              <small class="stat-sub">tahun berjalan</small>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon stat-icon-target">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Total Kunjungan</span>
+              <strong class="stat-value" id="statTotal">0</strong>
+              <small class="stat-sub">seluruh data tersimpan</small>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Grafik Kunjungan</h2>
+              <p id="chartSub">Memuat data...</p>
+            </div>
+            <label class="visually-hidden" for="chartPeriod">Pilih periode grafik</label>
+            <select class="chip-select" id="chartPeriod">
+              <option value="7d">7 hari terakhir</option>
+              <option value="month">Bulan ini</option>
+              <option value="prev">Bulan sebelumnya</option>
+              <option value="year">Tahun berjalan</option>
+            </select>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="visitChart" aria-label="Grafik jumlah kunjungan" role="img"></canvas>
+          </div>
+          <div class="chart-foot" id="chartSummary"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Kunjungan Terbaru</h2>
+              <p>Lima data buku tamu yang terakhir dicatat.</p>
+            </div>
+            <a class="panel-link" href="tamu.html">
+              Selengkapnya
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="table-wrap" id="recentTableWrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="col-no">No</th>
+                  <th>Nama</th>
+                  <th>Asal Instansi</th>
+                  <th>Tujuan</th>
+                  <th>Tanggal</th>
+                </tr>
+              </thead>
+              <tbody id="recentBody"></tbody>
+            </table>
+          </div>
+          <div class="empty" id="recentEmpty" hidden>
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg>
+            </div>
+            <h3>Belum ada data buku tamu</h3>
+            <p>Data akan muncul di sini setelah tamu mengisi buku tamu.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/db.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>

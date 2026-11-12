@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Petugas — Buku Tamu Puskesmas Bulusan</title>
+  <meta name="description" content="Halaman login petugas admin Buku Tamu Digital Puskesmas Bulusan." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="login-page" data-page="login">
+  <main class="login-shell">
+    <aside class="login-aside">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/logo.png" alt="" width="46" height="46" />
+      </span>
+      <h2>Buku Tamu Digital<br /><span>Puskesmas Bulusan</span></h2>
+      <p>Kelola data kunjungan, pantau statistik, dan buat laporan administrasi dalam satu tempat.</p>
+
+      <div class="login-points">
+        <div class="login-point">
+          <span class="icon-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          Data tamu tersimpan aman &amp; terpusat
+        </div>
+        <div class="login-point">
+          <span class="icon-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          Pencarian, filter, dan ekspor Excel
+        </div>
+        <div class="login-point">
+          <span class="icon-chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          Laporan harian, bulanan, dan tahunan
+        </div>
+      </div>
+
+      <div class="login-aside-foot">DINAS KESEHATAN KABUPATEN SEMARANG</div>
+    </aside>
+
+    <section class="login-form-wrap">
+      <h1>Masuk ke Dashboard</h1>
+      <p class="login-sub">Khusus petugas Puskesmas Bulusan yang memiliki akun admin.</p>
+
+      <div class="login-error" id="loginError" role="alert" hidden></div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginEmail">Email Admin</label>
+          <div class="input-wrap">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <input class="input" type="email" id="loginEmail" name="email" placeholder="nama@puskesmas.go.id" autocomplete="username" required />
+          </div>
+          <p class="field-error" data-error-for="email"></p>
+        </div>
+
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <div class="input-wrap password-wrap">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input class="input" type="password" id="loginPassword" name="password" placeholder="Masukkan password" autocomplete="current-password" required />
+            <button type="button" class="field-icon-btn" id="togglePassword" aria-label="Tampilkan password" aria-pressed="false">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <p class="field-error" data-error-for="password"></p>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" id="loginBtn">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/></svg>
+          Masuk
+        </button>
+      </form>
+
+      <div class="demo-hint" id="demoHint" hidden>
+        <strong>Mode demo.</strong> Gunakan email <strong>admin@puskesmas.test</strong> dan password <strong>admin123</strong>.
+        <button type="button" id="demoFill">Isi otomatis</button>
+      </div>
+
+      <p class="login-foot">
+        Lupa password? Hubungi administrator sistem.<br />
+        <a class="back-link" href="index.html">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+          Kembali ke halaman buku tamu
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/db.js" defer></script>
+  <script src="js/auth.js" defer></script>
+</body>
+</html>

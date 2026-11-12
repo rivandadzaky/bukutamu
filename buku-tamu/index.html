@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buku Tamu Digital — Puskesmas Bulusan</title>
+  <meta name="description" content="Buku Tamu Digital Puskesmas Bulusan. Silakan isi data kunjungan Anda." />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="public-page" data-page="public">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="UPTD Puskesmas Bulusan Kota Semarang — Beranda">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo.png" alt="" width="44" height="44" />
+        </span>
+        <span class="brand-text">
+          <strong>UPTD Puskesmas Bulusan</strong>
+          <small>Kota Semarang</small>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="eyebrow"><span class="dot"></span> Buku Tamu Digital</span>
+        <h1>Senang menyambut<br /><span class="accent">kunjungan Anda.</span></h1>
+        <p class="hero-sub">
+          Bantu kami mencatat kunjungan Anda dengan mengisi formulir singkat di bawah ini.
+        </p>
+        <div class="hero-meta">
+          <span class="meta-chip">
+            <svg class="icon-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-today>Hari ini</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container public-layout">
+      <section class="card form-card" id="formCard">
+        <div class="card-head">
+          <h2>Formulir Buku Tamu</h2>
+          <p>Isi data dengan benar agar catatan kunjungan tersimpan dengan rapi.</p>
+        </div>
+
+        <div class="form-body">
+          <form id="guestForm" novalidate autocomplete="on">
+            <div class="field">
+              <label for="tanggal">Tanggal Kunjungan <span class="req">*</span></label>
+              <div class="input-wrap">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input class="input" type="date" id="tanggal" name="tanggal" required />
+              </div>
+              <p class="field-error" data-error-for="tanggal"></p>
+            </div>
+
+            <div class="field">
+              <label for="nama">Nama Lengkap <span class="req">*</span></label>
+              <div class="input-wrap">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                <input class="input" type="text" id="nama" name="nama" placeholder="Contoh: Siti Rahmawati" maxlength="120" required autocomplete="name" />
+              </div>
+              <p class="field-error" data-error-for="nama"></p>
+            </div>
+
+            <div class="field">
+              <label for="asal_instansi">Asal Instansi / Komunitas <span class="req">*</span></label>
+              <div class="input-wrap">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01M10 21v-3h4v3"/></svg>
+                <input class="input" type="text" id="asal_instansi" name="asal_instansi" placeholder="Contoh: Universitas Diponegoro" maxlength="150" required autocomplete="organization" />
+              </div>
+              <p class="field-error" data-error-for="asal_instansi"></p>
+            </div>
+
+            <div class="field">
+              <label for="tujuan">Tujuan Kunjungan <span class="req">*</span></label>
+              <div class="input-wrap">
+                <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+                <input class="input" type="text" id="tujuan" name="tujuan" placeholder="Contoh: Konsultasi program kesehatan" maxlength="200" list="tujuanList" required />
+              </div>
+              <datalist id="tujuanList">
+                <option value="Konsultasi program kesehatan"></option>
+                <option value="Koordinasi kegiatan posyandu"></option>
+                <option value="Kunjungan dinas"></option>
+                <option value="Pengambilan surat keterangan"></option>
+                <option value="Survei/magang mahasiswa"></option>
+                <option value="Pemeriksaan kesehatan"></option>
+                <option value="Rapat lintas sektor"></option>
+                <option value="Pengambilan obat"></option>
+              </datalist>
+              <p class="field-error" data-error-for="tujuan"></p>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit" id="submitBtn">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              Kirim Buku Tamu
+            </button>
+            <p class="privacy-note">
+              Data yang Anda isi hanya digunakan untuk keperluan pencatatan kunjungan di Puskesmas Bulusan.
+            </p>
+          </form>
+        </div>
+
+        <div class="success-panel" id="successPanel" tabindex="-1" aria-live="polite" hidden>
+          <div class="success-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3>Terima kasih, <span id="successName">Tamu</span>!</h3>
+          <p id="successMeta">Data kunjungan Anda telah tercatat.</p>
+          <div class="success-details" id="successDetails"></div>
+          <div class="success-actions">
+            <button class="btn btn-primary" type="button" id="fillAgain">Isi Buku Tamu Lagi</button>
+            <a class="btn btn-outline" href="index.html">Kembali ke Beranda</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="public-aside">
+        <div class="card info-card">
+          <h2 class="info-title">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            Jam Pelayanan
+          </h2>
+          <dl class="schedule-list">
+            <div><dt>Senin – Kamis</dt><dd>07.00 – 17.00</dd></div>
+            <div><dt>Jumat</dt><dd>07.00 – 15.00</dd></div>
+            <div><dt>Sabtu</dt><dd>07.00 – 12.00</dd></div>
+            <div><dt>Minggu &amp; Libur</dt><dd>Tutup</dd></div>
+          </dl>
+        </div>
+
+        <div class="card info-card">
+          <h2 class="info-title">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            Lokasi &amp; Kontak
+          </h2>
+          <p class="info-text">
+            Jl. Timoho Raya, Kel Bulusan, Kec Tembalang<br />
+            Kota Semarang, Jawa Tengah 50773
+          </p>
+          <p class="info-text">
+            Telepon: (0298) 000000<br />
+            Email: puskesmas.bulusan@example.go.id
+          </p>
+        </div>
+
+        <div class="card info-card">
+          <h2 class="info-title">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+            </span>
+            Alur Kunjungan
+          </h2>
+          <ol class="info-list">
+            <li><span class="num">1</span> Isi formulir buku tamu dengan lengkap.</li>
+            <li><span class="num">2</span> Tunjukkan bukti pengisian kepada petugas.</li>
+            <li><span class="num">3</span> Petugas akan mengarahkan sesuai tujuan Anda.</li>
+          </ol>
+        </div>
+
+        <div class="note-card">
+          <h3>Catatan</h3>
+          <p>
+            Bagi pasien yang akan berobat, silakan mengambil nomor antrean di loket pendaftaran.
+            Buku tamu ini digunakan untuk pencatatan kunjungan tamu dan instansi.
+          </p>
+          <div class="demo-note" data-demo-note hidden>
+            Mode demo aktif: data tersimpan di browser perangkat ini dan belum terhubung ke Supabase.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year>2026</span> Puskesmas Bulusan. Seluruh hak cipta dilindungi.</p>
+      <div class="footer-links">
+        <a href="index.html">Buku Tamu</a>
+        <span>Dinas Kesehatan Kabupaten Semarang</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/db.js" defer></script>
+  <script src="js/public.js" defer></script>
+</body>
+</html>
