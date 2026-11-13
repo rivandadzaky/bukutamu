@@ -1,17 +1,3 @@
--- ============================================================================
--- SETUP LENGKAP - Buku Tamu Digital Puskesmas Bulusan
--- Jalankan SATU KALI di Supabase SQL Editor.
--- Isi: schema.sql + policies.sql + seed.sql (opsional).
--- Aman dijalankan ulang: tabel/policy memakai IF NOT EXISTS / DROP POLICY IF EXISTS,
--- dan seed hanya mengisi jika tabel masih kosong.
--- ============================================================================
-
--- ===== BAGIAN 1: SCHEMA =====
--- ============================================================================
--- Buku Tamu Digital Puskesmas Bulusan
--- Schema database (jalankan pertama di Supabase SQL Editor)
--- ============================================================================
-
 create extension if not exists pgcrypto;
 create extension if not exists pg_trgm;
 
@@ -230,23 +216,6 @@ create policy "profiles_select_own"
   to authenticated
   using (id = auth.uid());
 
--- ----------------------------------------------------------------------------
--- Catatan operasional:
--- 1. Di Supabase Dashboard -> Authentication -> Providers -> Email,
---    matikan "Enable sign ups" agar tidak ada pendaftaran publik.
--- 2. Buat akun admin melalui Authentication -> Users -> Add user.
--- 3. Promosikan akun tersebut menjadi admin:
---      update public.profiles set role = 'admin' where id = '<USER_UUID>';
--- 4. Jangan pernah memakai service_role key di frontend.
--- ----------------------------------------------------------------------------
-
-
--- ===== BAGIAN 3: SEED (OPSIONAL) =====
--- ============================================================================
--- Seed data (opsional)
--- Jalankan setelah schema.sql dan policies.sql.
--- ============================================================================
-
 -- Hanya mengisi data contoh jika tabel masih kosong.
 do $$
 begin
@@ -265,18 +234,4 @@ begin
   end if;
 end;
 $$;
-
--- ============================================================================
--- Membuat akun admin
--- ============================================================================
--- 1. Buka Supabase Dashboard -> Authentication -> Users -> Add user.
---    Isi email dan password admin, lalu konfirmasi email jika diminta.
--- 2. Salin UUID user tersebut, lalu jalankan:
---
---      update public.profiles
---      set role = 'admin',
---          nama = 'Administrator Puskesmas'
---      where id = '<USER_UUID>';
---
--- 3. Pastikan login berhasil di halaman login.html.
 
